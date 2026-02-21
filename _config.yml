@@ -1,9 +1,9 @@
 #-------------------------------
 # General Site Settings
-title: "Fusion Dev Blogs"
-description: "A blog about tech and development."
-url: "https://fusiondevblogs.com"
-baseurl: ""
+title: "Fusion Dev AI"
+description: "Lets learn about infusing AI in our day to day life"
+url: "https://priyaranjanks.github.io"
+baseurl: "/FusionDevAI"
 
 #-------------------------------
 # Build Settings

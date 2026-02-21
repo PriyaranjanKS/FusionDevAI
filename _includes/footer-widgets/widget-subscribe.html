@@ -1,0 +1,53 @@
+{% if site.data.settings.emailoctopus.enable == true %}
+<div class="col col-4 col-d-6 col-t-12">
+  <div class="widget widget-subscribe">
+    <div class="widget__head">
+      <h3 class="widget__title">{{ site.data.settings.emailoctopus.emailoctopus__title }}</h3>
+    </div>
+    <div class="subscribe__inner">
+      <div class="subscribe__group">
+        <div class="subscribe__description">{{ site.data.settings.emailoctopus.emailoctopus__text }}</div>
+      </div>
+     
+      <script async src="https://eocampaign1.com/form/b40086aa-36b1-11ef-89c3-3b6e42ca06b5.js" data-form="b40086aa-36b1-11ef-89c3-3b6e42ca06b5"></script>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<style>
+
+  .text-center {
+    display: none;
+  }
+.widget-subscribe .subscribe__group{
+margin:0px;
+}
+.btn w-100 btn-primary mb-2{
+font-size:17px;
+font-family : 'Aptos';
+}
+.text-center{
+font-size:24px;
+font-family : 'Aptos';
+}
+.text-block fr-inner{
+font-size:17px;
+font-weight: 700!important;
+font-family : 'Aptos';
+}
+.inline-container{
+border:none!important;
+} 
+.fr-inner{
+font-weight: bolder !important;
+}
+.emailoctopus-success-message{
+font-weight: bolder !important;
+color: #066 !important;
+}
+#field_0{
+font-size:17px;
+font-family : 'Aptos';
+}
+</style>

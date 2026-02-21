@@ -1,0 +1,110 @@
+<!-- begin header -->
+<header class="header">
+  <div class="container">
+    <div class="row">
+      <div class="header__inner col col-12">
+
+        <div class="logo">
+          <a class="logo__link" href="{{ site.baseurl }}/">
+            {% if site.data.settings.logo %}
+              <img class="logo__image light-logo" src="{{ site.baseurl }}{{ site.data.settings.logo }}" alt="{{ site.data.settings.title }}">
+              <img class="logo__image dark-logo" src="{{ site.baseurl }}{{ site.data.settings.logo_dark }}" alt="{{ site.data.settings.title }}" style="display: none;">
+            {% else %}
+              {{ site.data.settings.title }}
+            {% endif %}
+          </a>
+        </div>
+
+        <div class="hamburger">
+          <div></div>
+        </div>
+
+        <nav class="main-nav">
+          <div class="main-nav__box">
+            <ul class="nav__list list-reset">
+
+              {% for item in site.data.settings.menu__settings.menu__items %}
+              {% if item.submenu %}
+              <li class="nav__item dropdown">
+                <span class="nav__link dropdown-toggle">{{ item.title }} <i class="ion ion-ios-arrow-down arrow-down"></i></span>
+                <div class="dropdown-menu">
+                  {% for submenu-item in item.submenu %}
+                    <a href="{{ submenu-item.url }}" class="nav__link{% if page.url == submenu-item.url %} active-link{% endif %}">{{submenu-item.title}}</a>
+                  {% endfor %}
+                </div>
+              </li>
+              {% else %}
+              <li class="nav__item">
+                <a href="{{ item.url | relative_url }}" class="nav__link{% if page.url == item.url %} active-link{% endif %}">{{ item.title }}</a>
+              </li>
+              {% endif %}
+              {% endfor %}
+
+            </ul>
+          </div>
+
+          <div class="nav-buttons">
+            {% if site.data.settings.color_scheme == "auto" %}
+            <div class="toggle-theme">
+              <div class="toggle-moon" title="Enable dark mode" aria-hidden="true"><i class="ion ion-ios-moon"></i></div>
+              <div class="toggle-sun" title="Enable light mode" aria-hidden="true"><i class="ion ion-ios-sunny"></i></div>
+            </div>
+            {% elsif site.data.settings.color_scheme == "light" or site.data.settings.color_scheme == "dark" %}
+            {% else %}
+            <div class="toggle-theme">
+              <div class="toggle-moon" title="Enable dark mode"><i class="ion ion-ios-moon" aria-hidden="true"></i></div>
+              <div class="toggle-sun" title="Enable light mode"><i class="ion ion-ios-sunny" aria-hidden="true"></i></div>
+            </div>
+            {% endif %}
+            <i class="nav__icon icon__search ion ion-md-search"></i>
+          </div>
+        </nav>
+
+      </div>
+    </div>
+  </div>
+</header>
+<!-- end header -->
+
+{% include search.html %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const themeToggleButton = document.querySelector('.toggle-theme');
+    const body = document.body;
+    const lightLogo = document.querySelector('.light-logo');
+    const darkLogo = document.querySelector('.dark-logo');
+
+    // Function to set the theme
+    function setTheme(theme) {
+      body.setAttribute('data-theme', theme);
+      if (theme === 'dark') {
+        lightLogo.style.display = 'none';
+        darkLogo.style.display = 'block';
+      } else {
+        lightLogo.style.display = 'block';
+        darkLogo.style.display = 'none';
+      }
+    }
+
+    // Get the stored theme from localStorage
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) {
+      setTheme(storedTheme);
+    } else {
+      // Default to light theme
+      setTheme('light');
+    }
+
+    themeToggleButton.addEventListener('click', function() {
+      let newTheme = 'light';
+      if (body.getAttribute('data-theme') === 'dark') {
+        newTheme = 'light';
+      } else {
+        newTheme = 'dark';
+      }
+      setTheme(newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
+  });
+</script>

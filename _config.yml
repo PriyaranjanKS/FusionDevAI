@@ -2,8 +2,8 @@
 # General Site Settings
 title: "Fusion Dev AI"
 description: "Lets learn about infusing AI in our day to day life"
-url: "https://priyaranjanks.github.io"
-baseurl: "/FusionDevAI"
+url: "https://www.fusiondevconsulting.ai"
+baseurl: ""
 
 #-------------------------------
 # Build Settings
